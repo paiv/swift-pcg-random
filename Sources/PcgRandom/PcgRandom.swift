@@ -4,12 +4,12 @@ import PcgRandomC
 public class Pcg64Random : RandomNumberGenerator {
     // pcg64 = pcg_engines::setseq_xsl_rr_128_64
 
-    init(seed: UInt64, lock: PcgRandomLocking) {
+    public init(seed: UInt64, lock: PcgRandomLocking) {
         state = pcg_random(seed)
         self.lock = lock
     }
 
-    convenience init(seed: UInt64) {
+    public convenience init(seed: UInt64) {
         self.init(seed: seed, lock: Self.defaultLock())
     }
 
