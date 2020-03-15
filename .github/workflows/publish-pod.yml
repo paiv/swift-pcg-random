@@ -6,11 +6,13 @@ on:
 
 jobs:
   publish:
-    if: github.event.base_ref == 'refs/heads/master'
+    if: github.base_ref == 'master'
     name: Publish
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Sanity check
+      run: swift test -v
     - uses: actions/cache@v1
       with:
         path: .bundle
