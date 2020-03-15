@@ -1,0 +1,4 @@
+MY_DIR=`cd "$(dirname $BASH_SOURCE[0])" && pwd`
+
+export GEM_HOME="$(dirname $(find $MY_DIR/.bundle -name gems))"
+export PATH="$MY_DIR/bin:${GEM_HOME}/bin:$PATH"
