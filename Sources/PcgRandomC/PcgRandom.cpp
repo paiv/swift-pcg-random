@@ -1,6 +1,6 @@
 #include "pcg/pcg_random.hpp"
 extern "C" {
-#include "PcgRandomC/PcgRandomC.h"
+#include "include/PcgRandomC/PcgRandomC.h"
 }
 
 

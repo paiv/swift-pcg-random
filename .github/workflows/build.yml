@@ -34,3 +34,20 @@ jobs:
       working-directory: Examples
       env:
         DESTINATION_DEVICE: ${{ matrix.destination }}
+
+  pod-test:
+    name: Test iOS CocoaPods
+    needs: [spm-build]
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination:
+          - "platform=iOS Simulator,name=iPhone 11"
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and test
+      run: |
+        xcodebuild build -workspace 'Examples-Cocoapods.xcworkspace' -scheme 'Sample iOS App' -destination "${DESTINATION_DEVICE}"
+      working-directory: Examples
+      env:
+        DESTINATION_DEVICE: ${{ matrix.destination }}
