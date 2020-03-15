@@ -30,5 +30,6 @@ jobs:
     - name: Build and test
       run: |
         xcodebuild build -workspace 'Examples.xcworkspace' -scheme 'Sample iOS App' -destination "${DESTINATION_DEVICE}"
+      working-directory: Examples
       env:
         DESTINATION_DEVICE: ${{ matrix.destination }}
