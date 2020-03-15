@@ -24,11 +24,12 @@ jobs:
     strategy:
       matrix:
         destination:
-          - "platform=iOS,name=iPhone 11"
+          - "platform=iOS Simulator,name=iPhone 11"
     steps:
     - uses: actions/checkout@v2
     - name: Build and test
       run: |
         xcodebuild build -workspace 'Examples.xcworkspace' -scheme 'Sample iOS App' -destination "${DESTINATION_DEVICE}"
+      working-directory: Examples
       env:
         DESTINATION_DEVICE: ${{ matrix.destination }}
