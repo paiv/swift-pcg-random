@@ -1,4 +1,6 @@
+#if SWIFT_PACKAGE
 import PcgRandomC
+#endif
 
 
 public class Pcg64Random : RandomNumberGenerator {

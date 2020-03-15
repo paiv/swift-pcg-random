@@ -1,0 +1,13 @@
+install! 'cocoapods',
+    :generate_multiple_pod_projects => true
+
+platform :ios, '10.0'
+
+workspace 'Examples-Cocoapods'
+
+target 'Sample iOS App' do
+    use_frameworks!
+    project 'Sample iOS App cocoapods'
+
+    pod 'PcgRandom', :path => '../'
+end
