@@ -7,7 +7,9 @@ on:
     branches: [master]
 
 jobs:
-  build:
+
+  spm-build:
+    name: SPM build
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2
@@ -15,3 +17,18 @@ jobs:
       run: swift build -v
     - name: Run tests
       run: swift test -v
+
+  ios-test:
+    name: Test iOS
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        destination:
+          - "platform=iOS,name=iPhone 11"
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build and test
+      run: |
+        xcodebuild build -workspace 'Examples.xcworkspace' -scheme 'Sample iOS App' -destination "${DESTINATION_DEVICE}"
+      env:
+        DESTINATION_DEVICE: ${{ matrix.destination }}
