@@ -1,0 +1,27 @@
+name: Publish Pod
+
+on:
+  push:
+    tags: ['*']
+
+jobs:
+  publish:
+    if: github.event.base_ref == 'refs/heads/master'
+    name: Publish
+    runs-on: macOS-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/cache@v1
+      with:
+        path: .bundle
+        key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+        restore-keys: |
+          ${{ runner.os }}-gem-
+    - name: Bundle install
+      run: bundle install
+    - name: Pod lint
+      run: bundle exec pod lib lint PcgRandom.podspec --allow-warnings
+    - name: Pod push
+      run: bundle exec pod trunk push PcgRandom.podspec --allow-warnings
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}

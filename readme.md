@@ -2,6 +2,8 @@ PCG Pseudorandom Number Generator
 ==
 
 [![](https://github.com/paiv/swift-pcg-random/workflows/Build/badge.svg)](https://github.com/paiv/swift-pcg-random/actions)
+[![cocoapods](https://img.shields.io/cocoapods/v/PcgRandom.svg)](https://cocoapods.org/pods/PcgRandom)
+
 
 [PCG random][HOME] generator for Swift language.
 
@@ -17,6 +19,12 @@ Installation
 dependencies: [
     .package(url: "https://github.com/paiv/swift-pcg-random.git", .upToNextMajor(from: "1.0.0"))
 ]
+```
+
+### CocoaPods
+
+```ruby
+pod 'PcgRandom', '~> 1.0'
 ```
 
 
