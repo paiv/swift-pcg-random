@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'PcgRandom'
-  s.version          = '1.0.2'
+  s.version          = '1.0.3'
   s.summary          = 'PCG Pseudorandom Number Generator'
   s.homepage         = 'https://github.com/paiv/swift-pcg-random'
   s.license          = 'MIT'
