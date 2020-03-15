@@ -20,6 +20,7 @@ jobs:
 
   ios-test:
     name: Test iOS
+    needs: [spm-build]
     runs-on: macos-latest
     strategy:
       matrix:

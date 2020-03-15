@@ -9,6 +9,7 @@ class Pcg64RandomTests : XCTestCase {
     }
 
     func test_canon_seed_0_default_stream() {
+        // pcg64 rng(0u); rng();
         let canon: [UInt64] = [
             0x01070196e695f8f1, 0x703ec840c59f4493, 0xe54954914b3a44fa, 0x96130ff204b9285e,
             0x7d9fdef535ceb21a, 0x666feed42e1219a0, 0x981f685721c8326f, 0xad80710d6eab4dda,
@@ -39,6 +40,7 @@ class Pcg64RandomTests : XCTestCase {
     }
 
     func test_canon_seed_42_default_stream() {
+        // pcg64 rng(42u); rng();
         let canon: [UInt64] = [
             0x287472e87ff5705a, 0xbbd190b04ed0b545, 0xb6cee3580db14880, 0xbf5f7d7e4c3d1864,
             0x734eedbe7e50bbc5, 0xa5b6b5f867691c77, 0x6d6d2656235610ad, 0x8a162806f2198c2b,
