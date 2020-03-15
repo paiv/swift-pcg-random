@@ -1,4 +1,4 @@
-PCG Random Number Generator
+PCG Pseudorandom Number Generator
 ==
 
 [![](https://github.com/paiv/swift-pcg-random/workflows/Build/badge.svg)](https://github.com/paiv/swift-pcg-random/actions)
@@ -25,7 +25,7 @@ Usage
 
 ```swift
 import PcgRandom
-var pcg = Pcg64Random(seed: .random(in: 0...(.max)))
+var pcg = Pcg64Random(seed: .random(in: .min ... .max))
 let dice = Int.random(in: 1...20, using: &pcg)
 print(dice)
 ```

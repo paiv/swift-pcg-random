@@ -1,4 +1,4 @@
-#include "pcg_random.hpp"
+#include "pcg/pcg_random.hpp"
 extern "C" {
 #include "PcgRandomC/PcgRandomC.h"
 }
