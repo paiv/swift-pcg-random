@@ -35,7 +35,7 @@ class Pcg64RandomTests : XCTestCase {
         let random = Pcg64Random(seed: 0)
         for expected in canon {
             let actual = random.next()
-            XCTAssertEqual(actual, expected);
+            XCTAssertEqual(actual, expected)
         }
     }
 
@@ -66,12 +66,106 @@ class Pcg64RandomTests : XCTestCase {
         let random = Pcg64Random(seed: 42)
         for expected in canon {
             let actual = random.next()
-            XCTAssertEqual(actual, expected);
+            XCTAssertEqual(actual, expected)
+        }
+    }
+
+    func test_canon_seed_314_default_stream_advance() {
+        // pcg64 rng(314); rng.advance(6283185307179586476); rng();
+        let canon: [UInt64] = [
+            0x3f7259fbf9f1eaf3, 0xc7b521fb7edc4f5f, 0xf5b9638b9e5f4eb3, 0x24d0329752253947,
+            0x07996735a9ff811b, 0x3b54ad86898031d4, 0xf24650a1e5555fa2, 0xc1ff8e07a7d12a5c,
+            0xdd71cf414a50687a, 0x5424ada25b5491cd, 0xfc12c1a267bfd0d0, 0x57054254321ee1dc,
+            0x54a46561a91a99f8, 0xff02e579bbf732b9, 0xe2792a45e88c5a24, 0xdf2cccc73cad9f22,
+            0x3dbfb7764107fbee, 0xf40a25e2e7648126, 0x031078945a6c6276, 0xbf9320fc7471cde7,
+            0x78851cc02d653b1d, 0xf58405828ea6eeaf, 0xdbd8d5df9721181d, 0x836e0407d3c7e9eb,
+            0x6f200d61ec06f5dc, 0x76628362d9aedbec, 0x70855de43299b85f, 0x0b46618e75e3be50,
+            0x5a4a3bb546b54f10, 0x0d55fdb1bf30922b, 0x4d60b190fc29e1f4, 0x02b7ced2bc217037,
+            0x8134d17e72f57978, 0x5b0fcad87278e4d7, 0xa1bc57a5a13abf4b, 0x848df703a741b004,
+            0xd7aac6cafa645696, 0xd2e4e2b936381762, 0x6a82c9eb01f96849, 0xf5fcbd919a348764,
+            0x9c7fb51bc5dafd89, 0x6842f85dfab51b4e, 0xd9f464fa02fcfb6f, 0xd13932dd06256e6b,
+            0xdacfd3abcd20ab24, 0xe88c51e69692bc15, 0xab6925dca12c4cb2, 0x9fbd60ba2e5fdfc7,
+            0xb0913b042768d1cb, 0x589b1293fe6e1698, 0x98f345e95c3d020a, 0x64ab4f0f43d1d0ce,
+            0xd69be064a4b16a67, 0x79527fdb67792e22, 0x563a94efcc20f066, 0x0429f92b7c86ba57,
+            0x8728d6be4e95a223, 0xc172e7d50870eb48, 0x154f838ab906b8ed, 0x4b6efbf6a4817324,
+            0xad8e7f8c2285f82d, 0x26d66aafaf734af3, 0x35478a3096f696ed, 0xf63a11cfc40c7783,
+            0xa3127e67ef240a34, 0x5433b644f5429277, 0xc9e3de22d2cbd929, 0xf2b46093ac3e152c,
+            0x58d161157ecf942f, 0x17b361a97693615d, 0xbe2df3a0295c8894, 0x85c46aed5f7a5ec3,
+            0x74fb5c77493c69e4, 0x07080b7e206a49d1, 0x9619876eb77f046e, 0x4e7efcd5fce7effe,
+            0xd177daa200b374cf, 0x5b7fb89c3bf9d68e, 0x5a2b7968438efd84, 0xc5331abee7de52a1,
+        ]
+        let random = Pcg64Random(seed: 314)
+        random.advance(by: 6283185307179586476)
+        for expected in canon {
+            let actual = random.next()
+            XCTAssertEqual(actual, expected)
+        }
+    }
+
+    func test_canon_seed_0_stream_0() {
+        // pcg64 rng(0, 0); rng();
+        let canon: [UInt64] = [
+            0xd4feb4e5a4bcfe09, 0xe85a7fe071b026e6, 0x3a5b9037fe928c11, 0x7b044380d100f216,
+            0x1c7850a6b6d83e6a, 0x240b82fcc04f0926, 0x7e43df85bf9fba26, 0x43adf3380b1fe129,
+            0x03f0fb307287219c, 0x0781f4b84f42a2df, 0x36dac886f4232c6f, 0x0a32006a96a8d46b,
+            0xa56e609a788ce098, 0x75711678fa371144, 0xbcdd4619fa063896, 0x5cb5c9a1594f1a04,
+            0x799e6cc7d09bf3fd, 0xda1a4b52f72a8c6f, 0x374b6f698c864e48, 0x96a3e4d45b8d252d,
+            0x5fc89e7cbf7735e4, 0xe0cfe37beef7efe6, 0xc3467c95f4649808, 0x95cbda6a3275f18a,
+            0x3a4dc1e59bdb4172, 0x47f8755023ac78b5, 0xef8e166bf07dfa95, 0x40065cf0fa99882d,
+            0xbaa083ad70102eb6, 0x07c88e9d1a72a8dc, 0x1484e44aa83e901e, 0xf0f8df78086fdeba,
+            0x5114e38e0cff505d, 0x7e04bb9a2828c944, 0xb88c0de9e2af5658, 0xecba992ca7e9178d,
+            0x8b40b65347cfeffb, 0xfce9281a9381a55f, 0xfde34f9f228fc03f, 0x8c46656aa79eba9d,
+            0x1ed0d3f416073189, 0xd7adcc20a26d48d1, 0x2429dcfa355eddba, 0xec100f2285aaad68,
+            0x91a83984506e1ef4, 0x4c10c0f973e3cba5, 0x45d0d0ad9ab6890e, 0xa52b22d88ddb6090,
+            0x63f7e7549bf80c43, 0xfb03f87e5ea7137d, 0x822f96594246a4aa, 0x42242b1335cd3424,
+            0xf78652fc51ec76ac, 0x24db7314bda69cc5, 0xcce4cf66737c8427, 0xffd70eeca33ed90f,
+            0xc154aff2caddd546, 0x59d47a8ccd59e1bb, 0xabf793045ca561f8, 0x3f1486708729b21d,
+            0x76ed98409f3f9abe, 0x3f0bb2cd7cedd012, 0x448f78da1713ac85, 0xddbae7151c1578b2,
+            0xcf94237ec0973cd7, 0x76a0657cedebac81, 0x2b13b564bed7a3b3, 0x47a6fc0f4604c781,
+            0x22acf016523ae80f, 0xf728771b939c13a2, 0xab4aee3986c80ec8, 0x61d8c8c918b3fe52,
+            0x7a40380c747f9044, 0xfaf974af2e96a882, 0xb8bd56d90c69d42c, 0x7cea307dda515497,
+            0x56d0858a27ded2a3, 0x8717ea17698706b7, 0x6b34d0c0587e8867, 0x387a8142ee80d29a,
+        ]
+        let random = Pcg64Random(seed: 0, stream: 0)
+        for expected in canon {
+            let actual = random.next()
+            XCTAssertEqual(actual, expected)
+        }
+    }
+
+    func test_canon_seed_11_stream_6341068275337658369() {
+        // pcg64 rng(11, 6341068275337658369); rng();
+        let canon: [UInt64] = [
+            0x4505e3f8eb807d75, 0xe9d99c43e94a2a60, 0x2fac2c2ee95f4d74, 0x3bed4c3dbefa75d1,
+            0x4a8c34b144bdf691, 0xadeac01f9503e06b, 0x392c22557ca227c0, 0xf41d6de650fdf8c3,
+            0x84974b0c0aa707f1, 0xbe94f6f4f81d4e12, 0xaa3d18b2b3529568, 0x7bb5ad63fd30cc48,
+            0xc013be7a0200f1c3, 0x6a877c343bfd6c08, 0xa920dad0f81dbefc, 0xece3e6f7e8b9fdc0,
+            0xb049320da008b100, 0xcbddd419dbaafdb6, 0x4d408ea0b3d14752, 0x7a9b60bd8e7588f9,
+            0xa049acfe16f7caaf, 0x09f31236a170e76d, 0x3524b61b35ab14ba, 0xb3602fb2726aa978,
+            0xc7ec9e5a4fd6bb0d, 0x6c546004e2d8c326, 0x3ad18542d874d951, 0x32c63e25ff9b4151,
+            0xa4d56f30e9c7b74b, 0x941f0d6b2da20e88, 0xc5c653404521b2a6, 0xab00c49b69dc6553,
+            0x40fc76b1a8f5ebd8, 0x474044911ffc0c73, 0xfd5d64eb68b35aa4, 0xb94189851722f449,
+            0x8bddb6326537e049, 0x0e220074bfccdf81, 0xf83e4307a3839383, 0x9a8d71cc446d223c,
+            0xa0e4173a0765ec18, 0x280b5a8eace0f3f9, 0x40a0b355f62d48bb, 0x902c0098328476fd,
+            0x44b7402d2c474562, 0xb2687adf0b897112, 0xbc37324dce316ce7, 0x8ac82fb011d68336,
+            0xba18895c709e2480, 0x119169a20f3d2282, 0xd062418e538f6bd1, 0x99e6fe41c9c99e83,
+            0x838877f852e8d46c, 0x01137a19a6f22883, 0xd84854a181934c87, 0xa378b8429d169aac,
+            0x47566eb170486fde, 0x10be9e4f86947f4b, 0x2f58e843896c1e8c, 0x4cae8e4f980bc7a6,
+            0xe8007a3fc93dbf92, 0x980131e76ad7a630, 0x3ba6fffd97b76e16, 0xad475ace42d03863,
+            0xaf9f1db8f797cae0, 0x80276dc4ab5424d5, 0x02b1f28f91c7c024, 0x7e3202c964d2e66a,
+            0x06e5db992f2fc211, 0x12e3557dc1f66f6f, 0x7486dd5d1006188b, 0xfa1856e505861051,
+            0x90595cef6d47f49f, 0x9ecb0fe6bd4115c6, 0xf537c91f9a90b199, 0x86ad39b65d0a62ba,
+            0x954ad037c2ca232e, 0x99fc8385731d5907, 0x3ac7705150b9f240, 0x49c03d8b85fff9c9,
+        ]
+        let random = Pcg64Random(seed: 11, stream: 6341068275337658369)
+        for expected in canon {
+            let actual = random.next()
+            XCTAssertEqual(actual, expected)
         }
     }
 
     func test_multi_threading() {
-        let seed = UInt64.random(in: 0..<UInt64.max)
+        let seed = UInt64.random(in: .min ... .max)
         let sampleCount = 100000
 
         let expected: Set<UInt64>
@@ -98,5 +192,35 @@ class Pcg64RandomTests : XCTestCase {
         waitForExpectations(timeout: 10)
 
         XCTAssertTrue(results == expected, "seed: \(seed), samples: \(sampleCount)")
+    }
+
+    func test_multi_threading_advance() {
+        let seed = UInt64.random(in: .min ... .max)
+        let sampleCount = 100000
+
+        let expected: UInt64
+        do {
+            let randomExpected = Pcg64Random(seed: seed)
+            for _ in 0..<sampleCount {
+                randomExpected.advance(by: 1)
+            }
+            expected = randomExpected.next()
+        }
+
+        let random = Pcg64Random(seed: seed)
+
+        let threading = expectation(description: "threading")
+        threading.expectedFulfillmentCount = sampleCount
+
+        DispatchQueue.concurrentPerform(iterations: sampleCount) { _ in
+            random.advance(by: 1)
+            threading.fulfill()
+        }
+
+        waitForExpectations(timeout: 10)
+
+        let result = random.next()
+
+        XCTAssertTrue(result == expected, "seed: \(seed), samples: \(sampleCount)")
     }
 }
