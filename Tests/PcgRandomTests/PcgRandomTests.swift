@@ -223,4 +223,14 @@ class Pcg64RandomTests : XCTestCase {
 
         XCTAssertTrue(result == expected, "seed: \(seed), samples: \(sampleCount)")
     }
+
+    func test_backstep_u64() {
+        // pcg64 rng(0); rng.backstep(1); rng();
+        let random = Pcg64Random(seed: 0)
+
+        random.backstep(by: 1)
+        let result = random.next()
+
+        XCTAssertEqual(result, 5591422465364813936)
+    }
 }
