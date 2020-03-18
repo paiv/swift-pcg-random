@@ -20,6 +20,5 @@ let package = Package(
             name: "PcgRandomTests",
             dependencies: ["PcgRandom"]),
     ],
-    swiftLanguageVersions: [.v5],
-    cxxLanguageStandard: .cxx11
+    swiftLanguageVersions: [.v5]
 )
