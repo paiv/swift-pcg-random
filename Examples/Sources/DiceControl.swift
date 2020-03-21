@@ -1,7 +1,7 @@
 import UIKit
 
 
-class Dice : UIControl {
+class DiceControl : UIControl {
     
     weak var label: UILabel!
     

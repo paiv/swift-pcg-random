@@ -8,25 +8,31 @@
 
 /* Begin PBXBuildFile section */
 		C0E1AF3F2A247B4EE0B6A4AC /* Pods_Sample_iOS_App.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A417D00E7B7F4515F017FEBB /* Pods_Sample_iOS_App.framework */; };
+		C42E23F32426B9F700E3D773 /* AppRandom.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E23F22426B9F700E3D773 /* AppRandom.swift */; };
+		C42E23F82426BA0500E3D773 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E23F42426BA0400E3D773 /* HomeViewController.swift */; };
+		C42E23F92426BA0500E3D773 /* DiceControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E23F52426BA0500E3D773 /* DiceControl.swift */; };
+		C42E23FA2426BA0500E3D773 /* PaletteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E23F62426BA0500E3D773 /* PaletteViewController.swift */; };
+		C42E23FB2426BA0500E3D773 /* DiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C42E23F72426BA0500E3D773 /* DiceViewController.swift */; };
 		C4ED25CF241ECD6600B434D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ED25CE241ECD6600B434D7 /* AppDelegate.swift */; };
-		C4ED25D3241ECD6600B434D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4ED25D2241ECD6600B434D7 /* ViewController.swift */; };
 		C4ED25D6241ECD6600B434D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4ED25D4241ECD6600B434D7 /* Main.storyboard */; };
 		C4ED25D8241ECD6800B434D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4ED25D7241ECD6800B434D7 /* Assets.xcassets */; };
 		C4ED25DB241ECD6800B434D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4ED25D9241ECD6800B434D7 /* LaunchScreen.storyboard */; };
-		C4F41DB8241ED65A002F5F6E /* Dice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F41DB7241ED65A002F5F6E /* Dice.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		982F528B1C8501FD821EED6A /* Pods-Sample iOS App.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample iOS App.debug.xcconfig"; path = "Target Support Files/Pods-Sample iOS App/Pods-Sample iOS App.debug.xcconfig"; sourceTree = "<group>"; };
 		A417D00E7B7F4515F017FEBB /* Pods_Sample_iOS_App.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sample_iOS_App.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C42E23F22426B9F700E3D773 /* AppRandom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRandom.swift; sourceTree = "<group>"; };
+		C42E23F42426BA0400E3D773 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C42E23F52426BA0500E3D773 /* DiceControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceControl.swift; sourceTree = "<group>"; };
+		C42E23F62426BA0500E3D773 /* PaletteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaletteViewController.swift; sourceTree = "<group>"; };
+		C42E23F72426BA0500E3D773 /* DiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiceViewController.swift; sourceTree = "<group>"; };
 		C4ED25CB241ECD6600B434D7 /* Sample iOS App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sample iOS App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4ED25CE241ECD6600B434D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C4ED25D2241ECD6600B434D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C4ED25D5241ECD6600B434D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C4ED25D7241ECD6800B434D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4ED25DA241ECD6800B434D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C4ED25DC241ECD6800B434D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C4F41DB7241ED65A002F5F6E /* Dice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dice.swift; sourceTree = "<group>"; };
 		DBA2E192EF07FD3A416B8AB3 /* Pods-Sample iOS App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sample iOS App.release.xcconfig"; path = "Target Support Files/Pods-Sample iOS App/Pods-Sample iOS App.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,12 +78,15 @@
 			isa = PBXGroup;
 			children = (
 				C4ED25CE241ECD6600B434D7 /* AppDelegate.swift */,
+				C42E23F22426B9F700E3D773 /* AppRandom.swift */,
 				C4ED25D7241ECD6800B434D7 /* Assets.xcassets */,
-				C4F41DB7241ED65A002F5F6E /* Dice.swift */,
+				C42E23F52426BA0500E3D773 /* DiceControl.swift */,
+				C42E23F72426BA0500E3D773 /* DiceViewController.swift */,
+				C42E23F42426BA0400E3D773 /* HomeViewController.swift */,
 				C4ED25DC241ECD6800B434D7 /* Info.plist */,
 				C4ED25D9241ECD6800B434D7 /* LaunchScreen.storyboard */,
 				C4ED25D4241ECD6600B434D7 /* Main.storyboard */,
-				C4ED25D2241ECD6600B434D7 /* ViewController.swift */,
+				C42E23F62426BA0500E3D773 /* PaletteViewController.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -206,9 +215,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C4ED25D3241ECD6600B434D7 /* ViewController.swift in Sources */,
-				C4F41DB8241ED65A002F5F6E /* Dice.swift in Sources */,
+				C42E23F32426B9F700E3D773 /* AppRandom.swift in Sources */,
+				C42E23FB2426BA0500E3D773 /* DiceViewController.swift in Sources */,
+				C42E23FA2426BA0500E3D773 /* PaletteViewController.swift in Sources */,
 				C4ED25CF241ECD6600B434D7 /* AppDelegate.swift in Sources */,
+				C42E23F92426BA0500E3D773 /* DiceControl.swift in Sources */,
+				C42E23F82426BA0500E3D773 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

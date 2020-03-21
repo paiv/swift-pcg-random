@@ -2,9 +2,9 @@ import PcgRandom
 import UIKit
 
 
-class ViewController: UIViewController {
-    @IBOutlet weak var dice1: Dice!
-    @IBOutlet weak var dice2: Dice!
+class DiceViewController: UIViewController {
+    @IBOutlet weak var dice1: DiceControl!
+    @IBOutlet weak var dice2: DiceControl!
 
     @IBAction func handleTap(_ sender: Any) {
         rollDice()
