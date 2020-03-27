@@ -13,10 +13,28 @@ jobs:
     runs-on: macOS-latest
     steps:
     - uses: actions/checkout@v2
+    - name: Swift version
+      run: swift --version
     - name: Build
       run: swift build -v
     - name: Run tests
       run: swift test -v
+
+  spm-linux-build:
+    name: SPM Linux build
+    needs: [spm-build]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: YOCKOW/Action-setup-swift@v1.1.1
+      with:
+        swift-version: '5.2'
+    - name: Swift version
+      run: swift --version
+    - name: Build
+      run: swift build -v
+    - name: Run tests
+      run: swift test -v --enable-test-discovery
 
   ios-test:
     name: Test iOS
