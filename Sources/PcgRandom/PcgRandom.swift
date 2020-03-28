@@ -35,12 +35,18 @@ public class Pcg64Random : RandomNumberGenerator {
     }
 
     class func defaultLock() -> PcgRandomLocking {
+        #if os(Linux)
+            return PThreadMutex()
+        #else
+
         if #available(macOS 10.12, iOS 10.0, *) {
             return OSUnfairLock()
         }
         else {
             return PThreadMutex()
         }
+
+        #endif
     }
 
     public func advance(by delta: UInt128) {
