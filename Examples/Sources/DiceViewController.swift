@@ -3,18 +3,30 @@ import UIKit
 
 
 class DiceViewController: UIViewController {
-    @IBOutlet weak var dice1: DiceControl!
-    @IBOutlet weak var dice2: DiceControl!
+    @IBOutlet weak var dice1Control: DiceControl!
+    @IBOutlet weak var dice2Control: DiceControl!
 
     @IBAction func handleTap(_ sender: Any) {
         rollDice()
     }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        rng1 = Pcg64Random(seed: random.integer(), stream: random.integer())
+        rng2 = Pcg64Random(seed: random.integer(), stream: random.integer())
+    }
+    
+    let random = Random.shared
+    var rng1: Pcg64Random!
+    var rng2: Pcg64Random!
+
+    func roll(using rng: inout Pcg64Random) -> Int {
+        return Int.random(in: 1...6, using: &rng)
+    }
 
     func rollDice() {
-        var pcg = Pcg64Random(seed: .random(in: .min ... .max))
-        let roll = { (sides:Int) in Int.random(in: 1...sides, using: &pcg) }
-
-        dice1.value = roll(6)
-        dice2.value = roll(6)
+        dice1Control.value = roll(using: &rng1)
+        dice2Control.value = roll(using: &rng2)
     }
 }

@@ -39,6 +39,10 @@ extension Random {
         return I.random(in: range, using: &random)
     }
     
+    func integer<I>(in range: ClosedRange<I> = .min ... .max) -> I where I:FixedWidthInteger {
+        return I.random(in: range, using: &random)
+    }
+
     func float(in range: Range<Float>) -> Float {
         return Float.random(in: range, using: &random)
     }
