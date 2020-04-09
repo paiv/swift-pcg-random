@@ -33,7 +33,7 @@ Usage
 
 ```swift
 import PcgRandom
-var pcg = Pcg64Random(seed: .random(in: .min ... .max))
+var pcg = Pcg64Random(seed: 42)
 let dice = Int.random(in: 1...20, using: &pcg)
 print(dice)
 ```
