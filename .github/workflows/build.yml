@@ -10,28 +10,12 @@ jobs:
 
   spm-build:
     name: SPM build
-    runs-on: macOS-latest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macOS-latest, ubuntu-latest]
     steps:
     - uses: actions/checkout@v2
-    - name: Swift version
-      run: swift --version
-    - name: Build
-      run: swift build -v
-    - name: Run tests
-      run: swift test -v
-    - name: Measure performance
-      run: swift run -c release
-      working-directory: Examples/Performance
-
-  spm-linux-build:
-    name: SPM Linux build
-    needs: [spm-build]
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: YOCKOW/Action-setup-swift@v1.1.1
-      with:
-        swift-version: '5.2'
     - name: Swift version
       run: swift --version
     - name: Build
