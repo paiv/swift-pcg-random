@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#ifdef __LP64__
 
 typedef union {
     __uint128_t value;
@@ -80,3 +81,5 @@ bool
 uint128_lt(UInt128 a, UInt128 b) {
     return a.value < b.value;
 }
+
+#endif
