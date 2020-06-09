@@ -4,8 +4,7 @@
 
 #ifndef __LP64__
 
-typedef struct
-{
+typedef struct {
     uint64_t lo;
     uint64_t hi;
 } UInt128;
@@ -106,6 +105,7 @@ uint128_shl(UInt128 a, uint32_t b) {
 UInt128
 uint128_shr(UInt128 a, uint32_t b) {
     uint64_t lo = 0, hi = 0, c = 0;
+    
     if (b < 128) {
         if (b < 64) {
             lo = a.lo >> b;
@@ -115,6 +115,7 @@ uint128_shr(UInt128 a, uint32_t b) {
             lo = a.hi >> (b - 64);
         }
     }
+    
     UInt128 r = { lo | c, hi };
     return r;
 }
