@@ -224,6 +224,7 @@ class Pcg64RandomTests : XCTestCase {
         XCTAssertTrue(result == expected, "seed: \(seed), samples: \(sampleCount)")
     }
 
+    #if !os(watchOS)
     func test_backstep_u64() {
         // pcg64 rng(0); rng.backstep(1); rng();
         let random = Pcg64Random(seed: 0)
@@ -233,4 +234,5 @@ class Pcg64RandomTests : XCTestCase {
 
         XCTAssertEqual(result, 5591422465364813936)
     }
+    #endif
 }

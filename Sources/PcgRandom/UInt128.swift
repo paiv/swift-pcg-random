@@ -1,8 +1,7 @@
-#if SWIFT_PACKAGE
+#if os(macOS) || os(iOS)
+
 import PcgRandomC
 public typealias UInt128 = PcgRandomC.UInt128
-#endif
-
 
 public extension UInt128 {
 
@@ -68,3 +67,29 @@ public extension UInt128 {
         return uint128_lt(lhs, rhs)
     }
 }
+
+#elseif os(watchOS)
+
+import UInt128
+
+public extension UInt128 {
+    
+    init(lo: UInt64, hi: UInt64) {
+        self.init(upperBits: hi, lowerBits: lo)
+    }
+    
+    init(_ lo: UInt64) {
+        self.init(lo: lo, hi: 0)
+    }
+    
+    var lo: UInt64 {
+        self.lowerBits
+    }
+    
+    var hi: UInt64 {
+        self.upperBits
+    }
+    
+}
+
+#endif

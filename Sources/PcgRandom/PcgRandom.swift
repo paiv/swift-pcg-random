@@ -1,3 +1,6 @@
+#if os(watchOS)
+import UInt128
+#endif
 
 public class Pcg64Random : RandomNumberGenerator {
     // pcg64 = pcg_engines::setseq_xsl_rr_128_64
@@ -49,13 +52,18 @@ public class Pcg64Random : RandomNumberGenerator {
         #endif
     }
 
+    @_disfavoredOverload
     public func advance(by delta: UInt128) {
         lock.lock()
         defer { lock.unlock() }
 
         var delta = delta
         let zero = UInt128(0)
+        #if !os(watchOS)
         let one = UInt32(1)
+        #else
+        let one = UInt128(1)
+        #endif
         var cur_mult = Self.multiplier
         var cur_plus = increment
         var acc_mult = UInt128(1)
@@ -76,22 +84,28 @@ public class Pcg64Random : RandomNumberGenerator {
 
 public extension Pcg64Random {
 
+    @_disfavoredOverload
     convenience init(seed: UInt128, stream: UInt128, lock: PcgRandomLocking) {
         self.init(seed: seed, increment: ((stream << 1) | 1), lock: lock)
     }
-
+    
+    @_disfavoredOverload
     convenience init(seed: UInt128, lock: PcgRandomLocking) {
         self.init(seed: seed, increment: Self.defaultIncrement, lock: lock)
     }
 
+    @_disfavoredOverload
     convenience init(seed: UInt128, stream: UInt128) {
         self.init(seed: seed, stream: stream, lock: Self.defaultLock())
     }
 
+    @_disfavoredOverload
     convenience init(seed: UInt128) {
         self.init(seed: seed, lock: Self.defaultLock())
     }
 
+    #if !os(watchOS)
+    
     func discard(_ delta: UInt128) {
         advance(by: delta)
     }
@@ -99,6 +113,8 @@ public extension Pcg64Random {
     func backstep(by delta: UInt128) {
         advance(by: -delta)
     }
+    
+    #endif
 }
 
 
@@ -120,6 +136,8 @@ public extension Pcg64Random {
         advance(by: UInt128(delta))
     }
 
+    #if !os(watchOS)
+    
     func discard(_ delta: UInt64) {
         discard(UInt128(delta))
     }
@@ -127,4 +145,6 @@ public extension Pcg64Random {
     func backstep(by delta: UInt64) {
         backstep(by: UInt128(delta))
     }
+    
+    #endif
 }
