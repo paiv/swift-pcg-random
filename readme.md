@@ -1,7 +1,7 @@
 PCG Pseudorandom Number Generator
 ==
 
-[![](https://github.com/paiv/swift-pcg-random/workflows/Build/badge.svg)](https://github.com/paiv/swift-pcg-random/actions)
+[![standwithukraine](https://user-images.githubusercontent.com/196601/157238669-803a0bd3-4039-486e-a177-6e12f387867e.svg)](https://ukrainewar.carrd.co/) [![](https://github.com/paiv/swift-pcg-random/workflows/Build/badge.svg)](https://github.com/paiv/swift-pcg-random/actions)
 [![cocoapods](https://img.shields.io/cocoapods/v/PcgRandom.svg)](https://cocoapods.org/pods/PcgRandom)
 
 
