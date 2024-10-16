@@ -50,7 +50,6 @@
 			children = (
 				C4EAC704241D8F8A001FBD6D /* Sources */,
 				C4EAC703241D8F8A001FBD6D /* Products */,
-				C4EAC72B241DB54E001FBD6D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -77,13 +76,6 @@
 				C497418024240A27006A7AF4 /* PaletteViewController.swift */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		C4EAC72B241DB54E001FBD6D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,8 +126,6 @@
 				Base,
 			);
 			mainGroup = C4EAC6F9241D8F8A001FBD6D;
-			packageReferences = (
-			);
 			productRefGroup = C4EAC703241D8F8A001FBD6D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
