@@ -6,8 +6,9 @@ Pod::Spec.new do |s|
   s.license          = 'MIT'
   s.author           = 'Pavel Ivashkov'
   s.source           = { :git => 'https://github.com/paiv/swift-pcg-random.git', :tag => s.version.to_s }
-  s.macos.deployment_target = '10.10'
-  s.ios.deployment_target = '11.0'
+  s.swift_version    = '5.0'
+  s.macos.deployment_target = '10.13'
+  s.ios.deployment_target = '12.0'
 
   s.source_files = 'Sources/PcgRandom/**/*.swift'
 
