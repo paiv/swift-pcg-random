@@ -9,10 +9,10 @@ jobs:
     name: Publish
     runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
     - name: Sanity check
       run: swift test -v
-    - uses: actions/cache@v1
+    - uses: actions/cache@v4
       with:
         path: .bundle
         key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
