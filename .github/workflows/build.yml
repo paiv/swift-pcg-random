@@ -33,7 +33,7 @@ jobs:
     strategy:
       matrix:
         destination:
-          - "platform=iOS Simulator,name=iPhone 11"
+          - "platform=iOS Simulator,name=iPhone 15"
     steps:
     - uses: actions/checkout@v2
     - name: Build and test
@@ -50,7 +50,7 @@ jobs:
     strategy:
       matrix:
         destination:
-          - "platform=iOS Simulator,name=iPhone 11"
+          - "platform=iOS Simulator,name=iPhone 15"
     steps:
     - uses: actions/checkout@v2
     - uses: actions/cache@v1
