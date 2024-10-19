@@ -1,7 +1,7 @@
-#if os(macOS) || os(iOS) || os(watchOS)
+#if os(macOS) || os(iOS) || os(watchOS) || os(tvOS) || os(visionOS)
 import os
 
-@available(macOS 10.12, iOS 10.0, watchOS 3.0, *)
+@available(macOS 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *)
 struct OSUnfairLock : PcgRandomLocking {
 
     private var vault = os_unfair_lock()

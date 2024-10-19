@@ -39,7 +39,7 @@ public class Pcg64Random : RandomNumberGenerator {
             return PThreadMutex()
         #else
 
-        if #available(macOS 10.12, iOS 10.0, watchOS 3.0, *) {
+        if #available(macOS 10.12, iOS 10.0, watchOS 3.0, tvOS 10.0, *) {
             return OSUnfairLock()
         }
         else {
