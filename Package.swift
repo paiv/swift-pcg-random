@@ -4,6 +4,11 @@ import PackageDescription
 
 let package = Package(
     name: "PcgRandom",
+    platforms: [
+        .iOS(.v12),
+        .macOS(.v10_13),
+        .watchOS("9.0"),
+    ],
     products: [
         .library(
             name: "PcgRandom",
