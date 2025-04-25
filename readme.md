@@ -12,6 +12,16 @@ PCG Pseudorandom Number Generator
 [HOME]: https://www.pcg-random.org/
 
 
+Usage
+--
+
+```swift
+import PcgRandom
+var pcg = Pcg64Random(seed: 42)
+let dice = Int.random(in: 1...20, using: &pcg)
+print(dice)
+```
+
 Installation
 --
 
@@ -26,15 +36,4 @@ swift package add-target-dependency --package swift-pcg-random PcgRandom <target
 
 ```ruby
 pod 'PcgRandom', '~> 1.0'
-```
-
-
-Usage
---
-
-```swift
-import PcgRandom
-var pcg = Pcg64Random(seed: 42)
-let dice = Int.random(in: 1...20, using: &pcg)
-print(dice)
 ```
