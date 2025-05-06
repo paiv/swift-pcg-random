@@ -1,13 +1,13 @@
-// swift-tools-version:5.1
+// swift-tools-version: 6.1
 
 import PackageDescription
 
 let package = Package(
     name: "PcgRandom",
     platforms: [
-        .iOS(.v12),
-        .macOS(.v10_13),
-        .watchOS("9.0"),
+        .iOS(.v18),
+        .macOS(.v15),
+        .watchOS(.v11),
     ],
     products: [
         .library(
@@ -16,14 +16,10 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "PcgRandom",
-            dependencies: ["PcgRandomC"]),
-        .target(
-            name: "PcgRandomC",
-            dependencies: []),
+            name: "PcgRandom"),
         .testTarget(
             name: "PcgRandomTests",
             dependencies: ["PcgRandom"]),
     ],
-    swiftLanguageVersions: [.v5]
+    swiftLanguageModes: [.v6]
 )

@@ -1,14 +1,10 @@
-import XCTest
+import Testing
 @testable import PcgRandom
 
 
-class Pcg64RandomTests : XCTestCase {
+struct Pcg64RandomTests {
 
-    override func setUp() {
-        continueAfterFailure = false
-    }
-
-    func test_canon_seed_0_default_stream() {
+    @Test func canon_seed_0_default_stream() throws {
         // pcg64 rng(0u); rng();
         let canon: [UInt64] = [
             0x01070196e695f8f1, 0x703ec840c59f4493, 0xe54954914b3a44fa, 0x96130ff204b9285e,
@@ -35,11 +31,11 @@ class Pcg64RandomTests : XCTestCase {
         let random = Pcg64Random(seed: 0)
         for expected in canon {
             let actual = random.next()
-            XCTAssertEqual(actual, expected)
+            try #require(actual == expected)
         }
     }
 
-    func test_canon_seed_42_default_stream() {
+    @Test func canon_seed_42_default_stream() throws {
         // pcg64 rng(42u); rng();
         let canon: [UInt64] = [
             0x287472e87ff5705a, 0xbbd190b04ed0b545, 0xb6cee3580db14880, 0xbf5f7d7e4c3d1864,
@@ -66,11 +62,42 @@ class Pcg64RandomTests : XCTestCase {
         let random = Pcg64Random(seed: 42)
         for expected in canon {
             let actual = random.next()
-            XCTAssertEqual(actual, expected)
+            try #require(actual == expected)
         }
     }
 
-    func test_canon_seed_314_default_stream_advance() {
+    @Test func canon_seed_neg1_default_stream() throws {
+        // pcg64 rng(-1); rng();
+        let canon: [UInt64] = [
+            0xe871dc267b3faa96,  0x1acea8566524c7ec,  0x5072f93d3c41ef10,  0xe5d848fd7fd79518,
+            0xcdca92aba651fbfa,  0x5b2c8427c7047050,  0x43a64dddc8d350aa,  0x354ec04d5983ccea,
+            0x720dab17b0abbabc,  0x1118672cc56d2a71,  0x2774d332a9f8a372,  0x6c4151ee7e6fe6f9,
+            0x1d4b411eac2d7582,  0xe64ded6f4e1b669a,  0x957ceea5e5537363,  0xa178a8409ee1a291,
+            0x061bc8922953d949,  0x6a4fd78a8568ff2d,  0x1bb539563cb38658,  0x08db84b00d68dff1,
+            0x80887c5ec2105be6,  0x3848d8708ef1579f,  0x03afe4c2d0dd844a,  0x327c5ffb9fbf9917,
+            0x7aa3f35bebf41f58,  0x9aac87c50caa18f6,  0xcdf82eecd984e507,  0x7f03afe28923f0a8,
+            0x0e38ddfd4b374e56,  0xfa2bcb04c5ddb6ac,  0xe214cb37795f62bc,  0x0853223cdbaa2c72,
+            0x5cd3f5d86b82c8de,  0x5b80fc30c8e17b7a,  0x28e600f90700c685,  0xc60cd5ce983f803b,
+            0xd2c08377f6f99c79,  0x8bfeddb9dcfab5a3,  0xf22c369cc3bb916e,  0x315e626283cc3824,
+            0x53df7a9806646092,  0xcd4d96d79c1aa5dc,  0x8ba8c787c5ffcf15,  0xc2e83bea956cd175,
+            0x0067485c4ffefacd,  0x27148c74c5f1c598,  0x8d1b50ae5beb7334,  0x59298c390fa58da8,
+            0x2ee0934f848fc842,  0xc3d18e01104aed2b,  0x5d4a3beea7ffc5fd,  0x51c6843f404b9443,
+            0xd8b55bcd8f4af3df,  0xad28312b6b5e5209,  0xa392ff2a07145bce,  0xdc8c17101b00a9ff,
+            0x8fd44a46e05ff310,  0xd14936af2cc10953,  0x381853ebbc5d2263,  0x76f4ebfd1244f901,
+            0x80df95a9278dc4f0,  0x9f6b36963a7e7d9d,  0x37a34f6b2db1be14,  0xd8ddcacd8f8b57ed,
+            0xcf27a5f888c1f7d4,  0x32ca0f13d2c82aef,  0x99d88c21a5f0284b,  0x5c741738ad23485e,
+            0x6893127cfd5f717c,  0x057b6cdfafbd47f5,  0x83245945a5b1a5ee,  0x91a50d4728785aaf,
+            0x3fc81153388eda6e,  0x2826b316f20a8763,  0x2656d8f7442c8c7b,  0x8a6f8ab258f96087,
+            0xadc1594dc5a8b389,  0x048115c47d4ea7bc,  0xab30064b316b0e43,  0xaff92e97ffbe7fe2,
+        ]
+        let random = Pcg64Random(seed: -1)
+        for expected in canon {
+            let actual = random.next()
+            try #require(actual == expected)
+        }
+    }
+
+    @Test func canon_seed_314_default_stream_advance() throws {
         // pcg64 rng(314); rng.advance(6283185307179586476); rng();
         let canon: [UInt64] = [
             0x3f7259fbf9f1eaf3, 0xc7b521fb7edc4f5f, 0xf5b9638b9e5f4eb3, 0x24d0329752253947,
@@ -98,11 +125,11 @@ class Pcg64RandomTests : XCTestCase {
         random.advance(by: 6283185307179586476)
         for expected in canon {
             let actual = random.next()
-            XCTAssertEqual(actual, expected)
+            try #require(actual == expected)
         }
     }
 
-    func test_canon_seed_0_stream_0() {
+    @Test func canon_seed_0_stream_0() throws {
         // pcg64 rng(0, 0); rng();
         let canon: [UInt64] = [
             0xd4feb4e5a4bcfe09, 0xe85a7fe071b026e6, 0x3a5b9037fe928c11, 0x7b044380d100f216,
@@ -129,11 +156,11 @@ class Pcg64RandomTests : XCTestCase {
         let random = Pcg64Random(seed: 0, stream: 0)
         for expected in canon {
             let actual = random.next()
-            XCTAssertEqual(actual, expected)
+            try #require(actual == expected)
         }
     }
 
-    func test_canon_seed_11_stream_6341068275337658369() {
+    @Test func canon_seed_11_stream_6341068275337658369() throws {
         // pcg64 rng(11, 6341068275337658369); rng();
         let canon: [UInt64] = [
             0x4505e3f8eb807d75, 0xe9d99c43e94a2a60, 0x2fac2c2ee95f4d74, 0x3bed4c3dbefa75d1,
@@ -160,12 +187,12 @@ class Pcg64RandomTests : XCTestCase {
         let random = Pcg64Random(seed: 11, stream: 6341068275337658369)
         for expected in canon {
             let actual = random.next()
-            XCTAssertEqual(actual, expected)
+            try #require(actual == expected)
         }
     }
 
-    func test_multi_threading() {
-        let seed = UInt64.random(in: .min ... .max)
+    @Test func multi_threading() async {
+        let seed = Int.random(in: .min ... .max)
         let sampleCount = 100000
 
         let expected: Set<UInt64>
@@ -175,27 +202,32 @@ class Pcg64RandomTests : XCTestCase {
         }
 
         let random = Pcg64Random(seed: seed)
-        var results = Set<UInt64>()
-        let resultQueue = DispatchQueue(label: "callback")
 
-        let threading = expectation(description: "threading")
-        threading.expectedFulfillmentCount = sampleCount
+        let results = await confirmation(expectedCount: sampleCount) { confirmation in
+            await withTaskGroup { group in
+                for _ in 0 ..< sampleCount {
+                    group.addTask {
+                        confirmation()
+                        return random.next()
+                    }
+                    if group.isCancelled {
+                        break
+                    }
+                }
 
-        DispatchQueue.concurrentPerform(iterations: sampleCount) { _ in
-            let value = random.next()
-            resultQueue.sync { () -> Void in
-                results.insert(value)
+                var results = Set<UInt64>()
+                for await value in group {
+                    results.insert(value)
+                }
+                return results
             }
-            threading.fulfill()
         }
 
-        waitForExpectations(timeout: 10)
-
-        XCTAssertTrue(results == expected, "seed: \(seed), samples: \(sampleCount)")
+        #expect(results == expected, "seed: \(seed), samples: \(sampleCount)")
     }
 
-    func test_multi_threading_advance() {
-        let seed = UInt64.random(in: .min ... .max)
+    @Test func multi_threading_advance() async {
+        let seed = Int.random(in: .min ... .max)
         let sampleCount = 100000
 
         let expected: UInt64
@@ -209,28 +241,32 @@ class Pcg64RandomTests : XCTestCase {
 
         let random = Pcg64Random(seed: seed)
 
-        let threading = expectation(description: "threading")
-        threading.expectedFulfillmentCount = sampleCount
-
-        DispatchQueue.concurrentPerform(iterations: sampleCount) { _ in
-            random.advance(by: 1)
-            threading.fulfill()
+        await confirmation(expectedCount: sampleCount) { confirmation in
+            await withDiscardingTaskGroup { group in
+                for _ in 0 ..< sampleCount {
+                    group.addTask {
+                        random.advance(by: 1)
+                        confirmation()
+                    }
+                    if group.isCancelled {
+                        break
+                    }
+                }
+            }
         }
-
-        waitForExpectations(timeout: 10)
 
         let result = random.next()
 
-        XCTAssertTrue(result == expected, "seed: \(seed), samples: \(sampleCount)")
+        #expect(result == expected, "seed: \(seed), samples: \(sampleCount)")
     }
 
-    func test_backstep_u64() {
+    @Test func backstep_u64() {
         // pcg64 rng(0); rng.backstep(1); rng();
         let random = Pcg64Random(seed: 0)
 
         random.backstep(by: 1)
         let result = random.next()
 
-        XCTAssertEqual(result, 5591422465364813936)
+        #expect(result == 5591422465364813936)
     }
 }

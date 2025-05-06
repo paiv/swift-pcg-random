@@ -4,10 +4,13 @@ on:
   push:
     tags: ['*']
 
+env:
+  DEVELOPER_DIR: "/Applications/Xcode_16.3.app/Contents/Developer"
+
 jobs:
   publish:
     name: Publish
-    runs-on: macos-latest
+    runs-on: macos-15
     steps:
     - uses: actions/checkout@v4
     - name: Sanity check
