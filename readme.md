@@ -28,12 +28,12 @@ Installation
 ### Swift Package Manager
 
 ```sh
-swift package add-dependency 'https://github.com/paiv/swift-pcg-random.git' --from '1.0.0'
+swift package add-dependency 'https://github.com/paiv/swift-pcg-random.git' --from '2.0.0'
 swift package add-target-dependency --package swift-pcg-random PcgRandom <target-name>
 ```
 
 ### CocoaPods
 
 ```ruby
-pod 'PcgRandom', '~> 1.0'
+pod 'PcgRandom', '~> 2.0'
 ```
