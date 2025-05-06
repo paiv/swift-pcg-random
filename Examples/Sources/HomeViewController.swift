@@ -30,7 +30,7 @@ class HomeViewController : UIViewController {
 
     let random = Random.shared
     
-    func reseed(_ seed: UInt64) {
+    func reseed(_ seed: Int) {
         random.reset(seed: seed)
         ticker = handleTicker()
     }

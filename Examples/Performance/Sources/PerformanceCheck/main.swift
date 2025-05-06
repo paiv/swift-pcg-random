@@ -18,15 +18,9 @@ func measure(_ sampleCount: Int = 100, _ block: () -> Void) -> Double {
 }
 
 
-struct NoLock : PcgRandomLocking {
-    mutating func lock() {}
-    mutating func unlock() {}
-}
-
-
 func main() {
     let mean = measure {
-        let pcg = Pcg64Random(seed: 1111, lock: NoLock())
+        let pcg = Pcg64Random(seed: 1111)
         for _ in (0..<1_000_000) {
             _ = pcg.next()
         }
