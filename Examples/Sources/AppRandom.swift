@@ -10,13 +10,13 @@ class Random  {
 
 extension Random {
     
-    func reset(seed: UInt64) {
+    func reset(seed: Int) {
         random = Pcg64Random(seed: seed)
     }
     
     func reset(seed: String) {
         var hash: UInt32 = 0
-        
+
         for x in seed.unicodeScalars {
             var k = x.value
             k &*= 0xcc9e2d51
@@ -28,13 +28,17 @@ extension Random {
             hash = hash &* 5 &+ 0xe6546b64
         }
         
-        reset(seed: UInt64(hash))
+        reset(seed: Int(truncatingIfNeeded: hash))
     }
     
     func bool() -> Bool {
         return Bool.random(using: &random)
     }
-    
+
+    func integer() -> Int {
+        return integer(in: .min ... .max)
+    }
+
     func integer<I>(in range: Range<I>) -> I where I:FixedWidthInteger {
         return I.random(in: range, using: &random)
     }

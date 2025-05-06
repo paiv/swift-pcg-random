@@ -1,7 +1,5 @@
 PODS:
-  - PcgRandom (1.0):
-    - PcgRandom/PcgRandomC (= 1.0)
-  - PcgRandom/PcgRandomC (1.0)
+  - PcgRandom (1.0)
 
 DEPENDENCIES:
   - PcgRandom (from `../`)
@@ -11,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  PcgRandom: ed69e3798a8c1df8aade572527568245a4f3985b
+  PcgRandom: d2c7629f491dda5785f6f3c1d7d5bf58a795d107
 
-PODFILE CHECKSUM: ca4e3055eceddff781665b88682c43173f345b15
+PODFILE CHECKSUM: ca46a7f8557205c1226b52a9c2e092a3806e4e6b
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2
