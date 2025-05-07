@@ -204,7 +204,7 @@ struct Pcg64RandomTests {
         let random = Pcg64Random(seed: seed)
 
         let results = await confirmation(expectedCount: sampleCount) { confirmation in
-            await withTaskGroup { group in
+            await withTaskGroup(of: UInt64.self) { group in
                 for _ in 0 ..< sampleCount {
                     group.addTask {
                         confirmation()
