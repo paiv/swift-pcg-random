@@ -5,7 +5,7 @@ public final class Pcg64Random : RandomNumberGenerator, Sendable {
     // pcg64 = pcg_engines::setseq_xsl_rr_128_64
 
     public init(seed: UInt128, increment: UInt128) {
-        self.state = .init(Self.bump(state: increment &+ seed, increment: increment))
+        self.state = Mutex(Self.bump(state: increment &+ seed, increment: increment))
         self.increment = increment
     }
 
@@ -19,9 +19,9 @@ public final class Pcg64Random : RandomNumberGenerator, Sendable {
         state.withLock { store in
             let state = Self.bump(state: store, increment: increment)
 
-            let rot = UInt32(truncatingIfNeeded: (state >> 122))
+            let rot = UInt32(truncatingIfNeeded: state >> 122)
             let xored = UInt64(truncatingIfNeeded: (state >> 64) ^ state)
-            let result = (xored >> rot) | (xored << ((-Int32(truncatingIfNeeded: rot)) & 63))
+            let result = (xored >> rot) | (xored << ((0 &- rot) & 63))
 
             store = state
             return result
