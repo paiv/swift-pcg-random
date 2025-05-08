@@ -14,19 +14,22 @@ func measure(_ sampleCount: Int = 100, _ block: () -> Void) -> Double {
         samples.append(sample)
     }
 
-    return Double(samples.reduce(0, +)) / Double(sampleCount) / 1e9
+    samples.sort()
+    let median = samples[sampleCount / 2]
+    return Double(median) / 1e9
 }
 
 
 func main() {
-    let mean = measure {
-        let pcg = Pcg64Random(seed: 1111)
+    let pcg = Pcg64Random(seed: 1111)
+
+    let seconds = measure {
         for _ in (0..<1_000_000) {
             _ = pcg.next()
         }
     }
 
-    print(mean)
+    print(seconds)
 }
 
 
