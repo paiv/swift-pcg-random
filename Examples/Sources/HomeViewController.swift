@@ -1,8 +1,8 @@
 import UIKit
 
 
-class HomeViewController : UIViewController {
-    
+class HomeViewController : UITableViewController {
+
     @IBOutlet weak var seedTextField: UITextField!
     @IBOutlet weak var tickerLabel: UILabel!
     
@@ -11,7 +11,9 @@ class HomeViewController : UIViewController {
     }
     
     @IBAction func handleRandomSeedButton(_ sender: Any) {
-        reseed(.random(in: .min ... .max))
+        let x = Int.random(in: 100 ..< 1000)
+        seedTextField.text = "\(x)"
+        reseed(seed)
     }
     
     @IBAction func handleSeedTextField(_ sender: Any) {
@@ -29,11 +31,6 @@ class HomeViewController : UIViewController {
     }
 
     let random = Random.shared
-    
-    func reseed(_ seed: Int) {
-        random.reset(seed: seed)
-        ticker = handleTicker()
-    }
 
     func reseed(_ seed: String) {
         random.reset(seed: seed)
@@ -41,19 +38,20 @@ class HomeViewController : UIViewController {
     }
 
     var seed: String {
-        return seedTextField.text ?? ""
+        seedTextField.text ?? ""
     }
     
     var ticker: String {
-        get { return tickerLabel.text ?? "" }
+        get { tickerLabel.text ?? "" }
         set { tickerLabel.text = newValue }
     }
     
     private func handleTicker() -> String {
-        return (0..<40).map { _ in
-            random.integer(in: 0..<3) == 0 ? "-" : random.string(charCount: 1)
+        let value = (0..<32).map { _ in
+            random.integer(in: 0...3) == 0 ? "-" : random.string(charCount: 1)
         }
         .reduce(into: "") { (acc, s) in acc += s }
+        return "\"\(value)\""
     }
 }
 

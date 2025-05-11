@@ -60,4 +60,14 @@ extension Random {
     func string(charCount: Int) -> String {
         return String((0..<charCount).compactMap { _ in Self.abc.randomElement(using: &random) })
     }
+
+    func randogram() -> [[Float]] {
+        var data: [[Float]] = (0..<256).map { _ in Array(repeating: 0, count: 256) }
+        for _ in 0 ..< (128 * 256) {
+            let x = integer(in: 0...255)
+            let y = integer(in: 0...255)
+            data[y][x] = (1 + data[y][x]) / 2
+        }
+        return data
+    }
 }
